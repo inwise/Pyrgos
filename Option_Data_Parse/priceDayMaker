@@ -1,0 +1,58 @@
+import matplotlib as plt
+from c_daily_option import get_maturity_from_code, get_time_to_expiration
+
+
+class PriceDay:
+    def __init__(self):
+        self.strike = ''
+        self.price = ''
+        self.expiration = ''
+        self.expiration_month = ''
+
+
+source = open('C:\\findata\\deal_rts_options_extended.csv', 'r')
+destCallPath = 'C:\\findata\\rts_call_options_by_days\\price_day_'
+destPutPath = 'C:\\findata\\rts_put_options_by_days\\price_day_'
+
+dest_headers = ['strike', 'price', 'expiration', 'expiration_month']
+dictDay = {}
+
+for line in source:
+    splitted = line.split(',')
+    if splitted[0] != 'day':
+        p = PriceDay()
+        p.strike = splitted[1]
+        p.price = splitted[2]
+        p.expiration = splitted[3]
+        p.expiration_month = splitted[4]
+        key = splitted[0]+'/'+splitted[5]
+
+        listPriceDay = []
+        if dictDay.keys().__contains__(key):
+            for priceDay in dictDay.get(key):
+                listPriceDay.append(priceDay)
+
+        listPriceDay.append(p)
+        dictDay[key] = listPriceDay
+
+source.close()
+
+
+for key in dictDay.keys():
+    listPriceDay = dictDay.get(key)
+    keyArray = key.split('/')
+    day = keyArray[0]
+    optionType = keyArray[1]
+    destPath = ''
+    if optionType == 'P\n':
+        destPath = destPutPath + day + '.csv'
+    else:
+        destPath = destCallPath + day + '.csv'
+
+    dest = open(destPath, 'w')
+    dest.write(','.join(dest_headers) + '\n')
+    for priceDay in listPriceDay:
+        line = [priceDay.strike, priceDay.price, priceDay.expiration, priceDay.expiration_month]
+        dest.write(','.join(line) + '\n')
+
+    dest.close()
