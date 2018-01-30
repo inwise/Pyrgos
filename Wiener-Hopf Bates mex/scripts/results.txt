@@ -1,0 +1,18 @@
+91;0.179575921753;price_error:0.176008641251
+the price is 0.179576, computed in 0.701340 seconds
+96;0.2219870185;price_error:0.166559125646
+the price is 0.221987, computed in 1.769787 seconds
+101;0.503548735169;price_error:0.296093163009
+the price is 0.503549, computed in 2.054208 seconds
+106;0.00527879059716;price_error:0.00735166662515
+the price is 0.005279, computed in 2.076969 seconds
+111;0.00358012493402;price_error:0.00701704487068
+the price is 0.003580, computed in 2.081102 seconds
+116;0.0277706212966;price_error:0.0528164816026
+the price is 0.027771, computed in 2.079095 seconds
+121;0.0;price_error:0.0
+the price is 0.000000, computed in 2.101979 seconds
+126;0.0;price_error:0.0
+the price is 0.000000, computed in 2.093414 seconds
+131;0.0;price_error:0.0
+the price is 0.000000, computed in 2.077466 seconds
